@@ -1,23 +1,12 @@
-/*
-
-function App() {
-  return (
-    <div className="App">
-        blog app
-    </div>
-  );
-}
-
-export default App;
-*/
-
-import TopBar from "./tobar/TopBar";
+import TopBar from "./components/tobar/TopBar"
+import Home from "./pages/home/Home"
 
 function App() {
   return (
     // react fragments
     <> 
       <TopBar/> 
+      <Home/>
     </>
   );
 }
