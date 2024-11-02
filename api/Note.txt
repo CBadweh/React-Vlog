@@ -1,0 +1,5 @@
+Commit Points
+
+Most Basic Express:
+    Run simple Express Server
+    Enter local host and response.
