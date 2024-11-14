@@ -3,7 +3,7 @@ import "./topbar.css"
 
 export default function TopBar() {
   // Add User Login or Not Logic for different Headers
-  const user = true;
+  const user = false;
   return (
     <div className="top">
       <div className="topLeft"> 

@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   // Add User Login or Not Logic for Routine different pages
-  const user = true;
+  const user = false;
   return (
     <Router> 
       <TopBar/> 

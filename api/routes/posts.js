@@ -16,9 +16,12 @@ router.post("/", async (req, res) => {
 //UPDATE POST
 router.put("/:id", async (req, res) => {
     try {
+        // Find the Post by id
         const post = await Post.findById(req.params.id);
+        // Validate User ID
         if (post.username === req.body.username) {
             try {
+                // PUT Method to update user's post 
                 const updatedPost = await Post.findByIdAndUpdate(
                     req.params.id,
                     {
@@ -41,6 +44,7 @@ router.put("/:id", async (req, res) => {
 //DELETE POST
 router.delete("/:id", async (req, res) => {
     try {
+        // Find post by ID
         const post = await Post.findById(req.params.id);
         if (post.username === req.body.username) {
             try {
@@ -69,20 +73,27 @@ router.get("/:id", async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
-    const username = req.query.user;
-    const catName = req.query.cat;
+    // query the user and categories
+    const username = req.query.user; // "/?user=value"
+    const catName = req.query.cat;   // "/?cat=value"
     try {
         let posts;
+        // Retrive all the post from the specified user
+        // Else retrive all the post from the specified categories
+        // Else fetch all posts
         if (username) {
             posts = await Post.find({ username });
-        } else if (catName) {
+        }else if (catName) {
             posts = await Post.find({
+                // in the categories array, find the value with catName in it
                 categories: {
-                    $in: [catName],
+                    $in: [catName], 
                 },
             });
         } else {
             posts = await Post.find();
+            console.log("get all posts")
+            console.log(posts)
         }
         res.status(200).json(posts);
     } catch (err) {

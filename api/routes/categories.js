@@ -12,6 +12,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+// GET CATEGORIES
 router.get("/", async (req, res) => {
     try {
         const cats = await Category.find();

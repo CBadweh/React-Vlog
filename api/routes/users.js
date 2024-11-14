@@ -17,10 +17,8 @@ router.put("/:id", async (req, res) => {
             // PUT request to update user info
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.id,
-                {
-                    $set: req.body, // update user using $set from MongoDB
-                },
-                // { new: true } // response with the new info from DB
+                {$set: req.body, },// update user using $set from MongoDB
+                { new: true } // response with the new info from DB
             );
             res.status(200).json(updatedUser); // response
         } catch (err) {
