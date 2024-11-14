@@ -44,6 +44,7 @@ export default function SinglePost() {
                             <b>{post.username}</b>
                         </Link>
                     </span>   
+                    
                     <span className="singlePostAuthor">{new Date(post.createdAt).toDateString()}</span>
                 </div>
                 <p className="singlePostDesc">

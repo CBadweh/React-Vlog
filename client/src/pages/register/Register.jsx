@@ -17,13 +17,9 @@ export default function Register() {
     setError(false);
     try {
       // Register new user from React instead of Postman
-      const res = await axios.post("/auth/register", {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post("/auth/register", {username, email, password,});
       console.log(res)
-      res.data && window.location.replace("/login"); // if there's a res, reroute to Login page
+      res.data && window.location.replace("/login"); // if we successfuly registered, reroute to Login page
     } catch (err) {
       setError(true);
     }
@@ -32,8 +28,7 @@ export default function Register() {
   return (
     <div className="register">
       <span className="registerTitle">Register</span>
-
-      <form className="registerForm" onSubmit={handleSubmit}>
+      <form className="registerForm" onSubmit={handleSubmit}> {/* Call handleSubmit() when register button is submitted */}
         <label>Username</label>
         <input className="registerInput" type="text"
           placeholder="Enter your username..."
@@ -52,6 +47,8 @@ export default function Register() {
       <button className="registerLoginButton">
         <Link className="link" to="/login">Login</Link> {/* reroute to login page, path is define in App.js */}
       </button>
+      {/* if there's a error in Regiestering (ie username is already taken), display the message below under Register button */}
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}
     </div>
   )
 }

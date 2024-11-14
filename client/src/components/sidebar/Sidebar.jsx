@@ -39,7 +39,7 @@ export default function Sidebar() {
         <ul className="sidebarList">
           {/* Display all the categories from DB */}
           {cats.map((c) => (
-            // Fetch all the post based on the categories 
+            // Fetch all the post based on the categories and display them on homepage
             <Link to={`/?cat=${c.name}`} className="link">
               <li className="sidebarListItem">{c.name }</li>  
             </Link>
