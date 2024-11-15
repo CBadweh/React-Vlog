@@ -5,14 +5,15 @@ import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-
-
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
   // Add User Login or Not Logic for Routine different pages
-  const user = false;
+  // const user = false;
+  const { user } = useContext(Context);
   return (
     <Router> 
       <TopBar/> 

@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import "./topbar.css"
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 export default function TopBar() {
   // Add User Login or Not Logic for different Headers
-  const user = false;
+  // const user = false;
+  const { user, dispatch } = useContext(Context);
+
+  // call back function for logout
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
     <div className="top">
       <div className="topLeft"> 
@@ -20,7 +29,7 @@ export default function TopBar() {
           <li className="topListItem"><Link className="link" to="/">ABOUT</Link></li>
           <li className="topListItem"><Link className="link" to="/">CONTACT</Link></li>
           <li className="topListItem"><Link className="link" to="/write">WRITE</Link></li>
-          <li className="topListItem">{user && "LOGOUT"}</li> {/* If there's a user loggined, display LOGOUT, else shows nothing */}
+          <li className="topListItem" onClick={handleLogout}>{user && "LOGOUT"}</li> {/* If there's a user loggined, display LOGOUT, else shows nothing */}
         </ul>
       </div>
 
@@ -30,7 +39,8 @@ export default function TopBar() {
             <Link className="link" to="/settings">
               <img
                 className="topImg"
-                src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                // src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                src = {user.profilePic} // profilePic from DB
                 alt=""
               />
             </Link>
