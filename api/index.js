@@ -7,9 +7,12 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
+const path = require("path");
 
 dotenv.config();
 app.use(express.json()); // allow json 
+// allow React component to access and use the api/image folder for the URL in component/Post.jsx
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGO_URL)
@@ -22,8 +25,8 @@ const storage = multer.diskStorage({
     cb(null, "images"); // cb for callback function incase of error
   },
   filename: (req, file, cb) => {
-    // cb(null, req.body.name); // send file to React App in client folder using req.body.name
-    cb(null, "hello.jpeg");
+    cb(null, req.body.name); // send file to React App in client folder using req.body.name
+    // cb(null, "hello.jpeg");
   },
 });
 

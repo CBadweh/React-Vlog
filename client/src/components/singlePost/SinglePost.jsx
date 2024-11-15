@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import "./singlepost.css"
 
 export default function SinglePost() {
-    console.log("SinglePost")
-    // get post id from its location
+
+      // allow React component to gain access to api/image folder
+    const PF = "http://localhost:5000/images/";
+
+  // get post id from its location
     const location = useLocation()
     const path = location.pathname.split("/")[2] // split the string and get only the ID
 
@@ -28,7 +31,7 @@ export default function SinglePost() {
             {/* single post */}
             <div className="singlePostWrapper">
                 {post.photo && (
-                    <img src={post.photo} alt="" className="singlePostImg" />
+                    <img src={PF + post.photo} alt="" className="singlePostImg" />
                 )}
                 <h1 className="singlePostTitle">
                     {post.title}
