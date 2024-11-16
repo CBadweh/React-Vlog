@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   // allow React component to gain access to api/image folder
-  // const PF = "http://localhost:5000/images/";/
   const PF = "http://localhost:5000/images/";
 
   return (

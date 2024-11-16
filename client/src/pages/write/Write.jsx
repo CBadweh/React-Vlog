@@ -34,7 +34,7 @@ export default function Write() {
             const res = await axios.post("/posts", newPost); // add new post (username, title, desc, photo) to DB
             window.location.replace("/post/" + res.data._id); // reroute write page to the new post singlePost 
         } catch (err) { }
-    };
+    }; 
     return (
         <div className="write">
             {/* Upload the image and display it on the singlePost dashboard */}
