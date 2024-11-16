@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import "./topbar.css"
 import { useContext } from "react";
@@ -7,6 +8,8 @@ export default function TopBar() {
   // Add User Login or Not Logic for different Headers
   // const user = false;
   const { user, dispatch } = useContext(Context);
+  const PF = "http://localhost:5000/images/"
+
 
   // call back function for logout
   const handleLogout = () => {
@@ -36,11 +39,12 @@ export default function TopBar() {
       <div className="topRight"> 
         {/* Display IMG or LOGIN REGISTER dependinon if user logins */}
         {user ? (
+          // clicking on the image reroutes to setting page
             <Link className="link" to="/settings">
               <img
                 className="topImg"
                 // src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                src = {user.profilePic} // profilePic from DB
+                src = {PF + user.profilePic} // profilePic from DB, but DB needs to know api/imagese Public Folder (PF)
                 alt=""
               />
             </Link>

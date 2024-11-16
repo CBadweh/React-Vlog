@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, req.body.name); // send file to React App in client folder using req.body.name
-    // cb(null, "hello.jpeg");
   },
 });
 

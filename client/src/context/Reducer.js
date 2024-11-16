@@ -2,6 +2,7 @@
 
 const Reducer = (state, action) => {
     switch (action.type) { //
+        // LOGIN IN CONTEXT API
         case "LOGIN_START":
             return {
                 user: null,
@@ -20,6 +21,26 @@ const Reducer = (state, action) => {
                 isFetching: false,  // failed to logged in, but finish loggin in process
                 error: true,        //
             };
+        
+        // UPDATE USER SETTING CONTEXT API
+        case "UPDATE_START":
+            return {
+                ...state,           // nothing will chage
+                isFetching: true
+            };
+        case "UPDATE_SUCCESS":
+            return {
+                user: action.payload, // update user
+                isFetching: false,
+                error: false,
+            };
+        case "UPDATE_FAILURE":
+            return {
+                user: state.user,   // don't change the user 
+                isFetching: false,
+                error: true,
+            };
+        // LOGOUT CONTEXT API
         case "LOGOUT":
             return {
                 user: null,

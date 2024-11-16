@@ -22,7 +22,7 @@ router.put("/:id", async (req, res) => {
             );
             res.status(200).json(updatedUser); // response
         } catch (err) {
-            console.log("error")
+            // console.log("error")
             res.status(500).json(err);
         }
     } else {
